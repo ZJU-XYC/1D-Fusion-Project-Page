@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="title" content="From 2D Grids to 1D Tokens: Reforming Shared Representations for Multimodal Image Fusion">
+  <meta name="description" content="We redesign the shared representation in multimodal image fusion by mapping inputs into compact 1D image tokens, enabling decoupled global appearance control and local detail preservation.">
+  <meta name="keywords" content="multimodal image fusion, 1D tokens, image tokenizer, infrared-visible fusion, medical image fusion, TiTok, selective token editing">
+  <meta name="author" content="Anonymous Authors">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="From 2D Grids to 1D Tokens: Reforming Shared Representations for Multimodal Image Fusion">
+  <meta property="og:description" content="We redesign the shared representation in multimodal image fusion by mapping inputs into compact 1D image tokens, enabling decoupled global appearance control and local detail preservation.">
+
+  <meta name="citation_title" content="From 2D Grids to 1D Tokens: Reforming Shared Representations for Multimodal Image Fusion">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="International Conference on Machine Learning">
+
+  <meta name="theme-color" content="#2563eb">
+
+  <title>From 2D Grids to 1D Tokens | ICML 2026</title>
+
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "From 2D Grids to 1D Tokens: Reforming Shared Representations for Multimodal Image Fusion",
+    "description": "We redesign the shared representation in multimodal image fusion by mapping inputs into compact 1D image tokens, enabling decoupled global appearance control and local detail preservation via Selective Token Editing (STE).",
+    "datePublished": "2026",
+    "publisher": {
+      "@type": "Organization",
+      "name": "International Conference on Machine Learning"
+    },
+    "keywords": ["multimodal image fusion", "1D tokens", "image tokenizer", "infrared-visible fusion", "TiTok", "selective token editing"],
+    "isAccessibleForFree": true
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+
+  <!-- ===== HERO / TITLE ===== -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+
+            <h1 class="title is-1 publication-title">
+              From 2D Grids to 1D Tokens:<br>
+              Reforming Shared Representations for Multimodal Image Fusion
+            </h1>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=zh-CN&user=xbJB0mQAAAAJ" target="_blank">Yuchen Xian</a><sup>1,2</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=zh-CN&user=vvnFsIIAAAAJ" target="_blank">Yang He</a><sup>3,4</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=zh-CN&user=SdJX4nAAAAAJ" target="_blank">Yunqiu Xu</a><sup>5</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=zh-CN&user=RMSuNFwAAAAJ" target="_blank">Yi Yang</a><sup>1,2,*</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors" style="margin-top: 0.5rem;">
+              <span class="author-block">
+                <sup>1</sup>ReLER, The State Key Lab of Brain Machine Intelligence, Zhejiang University<br>
+                <sup>2</sup>College of Artificial Intelligence, Zhejiang University<br>
+                <sup>3</sup>CFAR, Agency for Science, Technology and Research, Singapore<br>
+                <sup>4</sup>IHPC, Agency for Science, Technology and Research, Singapore<br>
+                <sup>5</sup>National University of Singapore
+              </span>
+              <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Corresponding Author</small></span>
+            </div>
+
+            <div class="is-size-5 publication-authors" style="margin-top: 0.75rem;">
+              <span class="venue-badge">ICML 2026</span>
+            </div>
+
+            <div class="column has-text-centered" style="margin-top: 1rem;">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark" style="pointer-events:none; opacity:0.5;">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper (coming soon)</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark" style="pointer-events:none; opacity:0.5;">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code (coming soon)</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark" style="pointer-events:none; opacity:0.5;">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv (coming soon)</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===== END HERO ===== -->
+
+
+  <!-- ===== ABSTRACT ===== -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Multimodal image fusion (MMIF) aims to integrate complementary information from different
+              modalities into a single fused image that preserves fine local details while maintaining globally
+              consistent appearance. Most existing approaches build shared representations on <strong>2D feature grids</strong>,
+              which excel at modeling local structures but offer limited leverage over image-level appearance
+              factors. To better optimize two objectives jointly, we redesign the shared representation by
+              mapping inputs into a compact sequence of <strong>discrete 1D image tokens</strong>, and instantiate this
+              design with TiTok as a lightweight tokenizer, decoupling the shared representation from fixed
+              pixel locations and concentrating image-level attributes into a small set of global tokens.
+            </p>
+            <p>
+              We propose <strong>Selective Token Editing (STE)</strong>: we sparsely update only a small set of critical
+              shared tokens, providing a lightweight token-level mechanism to steer global appearance
+              coherence while keeping the fusion backbone unchanged and avoiding complex loss designs.
+              Experiments on multiple benchmarks show that our method delivers consistent, multi-metric
+              improvements—enhancing global coherence and local fidelity simultaneously—and achieves
+              the best overall performance under comprehensive evaluation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===== END ABSTRACT ===== -->
+
+
+
+
+
+
+
+
+  <!-- ===== METHOD OVERVIEW ===== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Method Overview</h2>
+      <figure class="image" style="margin-top: 0rem;">
+        <img src="static/images/pipeline.png" alt="Method pipeline: two-stage framework with 1D tokenizer and Selective Token Editing" style="border-radius: 8px; box-shadow: 0 2px 16px rgba(0,0,0,0.10);">
+        <figcaption style="text-align:center; margin-top:0.75rem; color:#555; font-size:0.95rem;">
+          <strong>Figure 2.</strong> Overview of our two-stage framework. Stage I establishes base/detail factorization via reconstruction warm-up. Stage II applies Selective Token Editing (STE) to steer global appearance during fusion training.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+  <!-- ===== END METHOD ===== -->
+
+
+  <!-- ===== EXPERIMENTS ===== -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Experiments</h2>
+      <div class="content">
+        <p>
+          We evaluate on two multimodal image fusion tasks and two downstream perception tasks:
+        </p>
+        <ul>
+          <li>
+            <strong>Infrared-Visible Image Fusion (IVIF):</strong>
+            Trained on MSRS (1,083 pairs); tested on M3FD (202 pairs), RoadScene (152 pairs),
+            and TNO (30 pairs).
+          </li>
+          <li>
+            <strong>Medical Image Fusion (MIF):</strong>
+            Evaluated on the Harvard Medical dataset.
+          </li>
+          <li>
+            <strong>Downstream tasks:</strong>
+            Object detection on M3FD and semantic segmentation on FMB.
+          </li>
+        </ul>
+        <p>
+          We compare against 9 state-of-the-art methods including CDDFuse, DDFM, LRRNet, Text-IF,
+          TC-MoA, EMMA, and SAGE. Our method achieves the best overall performance under
+          comprehensive multi-metric evaluation, delivering consistent improvements in global
+          coherence and local fidelity simultaneously.
+        </p>
+
+        <!-- Qualitative comparison -->
+        <figure class="image" style="margin-top: 2rem;">
+          <img src="static/images/qualitative_comparison.png" alt="Qualitative comparison on M3FD, RoadScene, and TNO datasets" style="border-radius: 8px; box-shadow: 0 2px 16px rgba(0,0,0,0.10);">
+          <figcaption style="text-align:center; margin-top:0.75rem; color:#555; font-size:0.95rem;">
+            <strong>Figure 3.</strong> Qualitative comparisons on M3FD, RoadScene, and TNO datasets. Our method produces fused images with enhanced global coherence and sharper local structures compared to existing methods.
+          </figcaption>
+        </figure>
+
+        <!-- Downstream comparison -->
+        <figure class="image" style="margin-top: 2.5rem;">
+          <img src="static/images/downstream_comparison.png" alt="Downstream task comparison: object detection and semantic segmentation" style="border-radius: 8px; box-shadow: 0 2px 16px rgba(0,0,0,0.10);">
+          <figcaption style="text-align:center; margin-top:0.75rem; color:#555; font-size:0.95rem;">
+            <strong>Figure 4.</strong> Downstream task evaluation. Our fused images improve object detection (M3FD) and semantic segmentation (FMB) performance over competing methods.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  <!-- ===== END EXPERIMENTS ===== -->
+
+
+
+
+
+  <!-- ===== BIBTEX ===== -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@inproceedings{xian2026_1dtokens,
+  title     = {From 2D Grids to 1D Tokens: Reforming Shared Representations for Multimodal Image Fusion},
+  author    = {Xian, Yuchen and He, Yang and Xu, Yunqiu and Yang, Yi},
+  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
+  year      = {2026}
+}</code></pre>
+    </div>
+  </section>
+  <!-- ===== END BIBTEX ===== -->
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the
+              <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>
+              which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              This website is licensed under a
+              <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
